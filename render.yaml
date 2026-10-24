@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: mab-technologies-ai-demo
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run build && npm run start
+    healthCheckPath: /api/health
+    envVars:
+      - key: AI_API_KEY
+        sync: false
+      - key: AI_API_URL
+        value: https://api.openai.com/v1/chat/completions
+      - key: AI_MODEL
+        value: gpt-4o-mini
+      - key: NODE_VERSION
+        value: 20.11.0
