@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Menu, X, Bot, ArrowRight, Moon, Sun } from 'lucide-react';
 
 interface NavigationProps {
@@ -7,16 +7,7 @@ interface NavigationProps {
 
 export default function Navigation({ onScrollToSection }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navLinks = [
     { id: 'explore', label: 'Explore AI Agents', section: 'chat' },
@@ -26,11 +17,7 @@ export default function Navigation({ onScrollToSection }: NavigationProps) {
 
   return (
     <nav
-      className={`fixed inset-x-0 top-0 z-50 w-full border-b transition-colors duration-300 ${
-        scrolled
-          ? 'border-gray-100 bg-white/90 backdrop-blur-md dark:border-gray-800 dark:bg-gray-900/90'
-          : 'border-transparent bg-transparent'
-      }`}
+      className="fixed inset-x-0 top-0 z-50 w-full border-b border-gray-100 bg-white transition-colors duration-300 dark:border-gray-800 dark:bg-gray-900"
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <div className="flex items-center gap-3">
@@ -75,7 +62,7 @@ export default function Navigation({ onScrollToSection }: NavigationProps) {
           ))}
           <button
             onClick={() => {
-              onScrollToSection('contact');
+              window.open('https://mab-technologies-new.onrender.com', '_blank', 'noopener,noreferrer');
               setIsOpen(false);
             }}
             className="flex items-center gap-2 rounded-xl bg-brand-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-brand-700 transition-colors"
@@ -113,7 +100,7 @@ export default function Navigation({ onScrollToSection }: NavigationProps) {
               ))}
               <button
                 onClick={() => {
-                  onScrollToSection('contact');
+                  window.open('https://mab-technologies-new.onrender.com', '_blank', 'noopener,noreferrer');
                   setIsOpen(false);
                 }}
                 className="flex items-center justify-between px-4 py-3 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors"
