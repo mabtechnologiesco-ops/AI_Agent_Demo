@@ -82,14 +82,6 @@ export default function Navigation({ onScrollToSection }: NavigationProps) {
           >
             Build My AI Agent <ArrowRight className="h-3.5 w-3.5" />
           </button>
-          <a
-            href="https://mab-technologies-new.onrender.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-xl bg-gray-200 px-5 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-300 transition-colors"
-          >
-            Talk to MAB Technologies
-          </a>
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
@@ -102,6 +94,8 @@ export default function Navigation({ onScrollToSection }: NavigationProps) {
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
+      </div>
+        {isOpen && (
         <div className="md:hidden border-b border-gray-100 bg-white dark:border-gray-800 dark:bg-gray-900">
           <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
             <div className="flex flex-col gap-3">
@@ -129,7 +123,7 @@ export default function Navigation({ onScrollToSection }: NavigationProps) {
             </div>
           </div>
         </div>
-      </div>
+        )}
     </nav>
   );
 }

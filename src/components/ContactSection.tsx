@@ -20,7 +20,9 @@ export default function ContactSection() {
 
         <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="mailto:mabtechnologies.co@gmail.com"
+            href="https://mab-technologies-new.onrender.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 rounded-xl bg-brand-600 px-8 py-4 text-sm font-semibold hover:bg-brand-700 transition-colors sm:px-10 sm:py-4"
           >
             <Mail className="h-5 w-5" /> Talk to MAB Technologies

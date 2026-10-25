@@ -232,6 +232,9 @@ app.post('/api/chat', async (req, res) => {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${AI_API_KEY}`,
+             'HTTP-Referer': 'http://localhost:5173',
+             'X-Title': 'MAB Technologies AI Demo',
+
           },
           body: JSON.stringify(payload),
           signal: controller.signal,
@@ -295,3 +298,4 @@ ensureBuild()
     console.error('Failed to build frontend:', err);
     process.exit(1);
   });
+
