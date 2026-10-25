@@ -224,7 +224,7 @@ app.post('/api/chat', async (req, res) => {
 
     try {
       const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 20000);
+      const timeout = setTimeout(() => controller.abort(), 45000);
       let response;
       try {
         response = await fetch(AI_API_URL, {
@@ -248,8 +248,8 @@ app.post('/api/chat', async (req, res) => {
         aiMessage = activeScenario ? getKnowledgeFallback(knowledgeBase, fallbackQuestion, activeScenario) : getFallbackResponse(lastMessage.content);
         demoMode = true;
       } else if (!response.ok) {
-        await response.text();
-        console.error('AI API error:', response.status);
+        const errBody = await response.text();
+        console.error('AI API error:', response.status, errBody.slice(0, 500));
         aiMessage = activeScenario ? getKnowledgeFallback(knowledgeBase, fallbackQuestion, activeScenario) : getFallbackResponse(lastMessage.content);
         demoMode = true;
       } else {
@@ -277,7 +277,12 @@ app.post('/api/chat', async (req, res) => {
 
 // Health check endpoint
 app.get('/api/health', (_req, res) => {
-  res.json({ status: 'ok', aiConfigured: Boolean(AI_API_KEY) });
+  res.json({
+    status: 'ok',
+    aiConfigured: Boolean(AI_API_KEY),
+    aiApiUrl: AI_API_URL,
+    aiModel: AI_MODEL,
+  });
 });
 
 ensureBuild()
