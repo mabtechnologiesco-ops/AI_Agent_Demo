@@ -32,9 +32,9 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.json({ limit: '1mb' }));
 
-const AI_API_URL = process.env.AI_API_URL || 'https://api.openai.com/v1/chat/completions';
+const AI_API_URL = process.env.AI_API_URL || 'https://openrouter.ai/api/v1/chat/completions';
 const AI_API_KEY = process.env.AI_API_KEY;
-const AI_MODEL = process.env.AI_MODEL || 'gpt-4o-mini';
+const AI_MODEL = process.env.AI_MODEL || 'openai/gpt-4o-mini';
 
 const SYSTEM_PROMPT = `You are an AI assistant representing MAB TECHNOLOGIES SL, a technology company that develops custom AI agents for businesses. Your role is to demonstrate how an AI agent can help businesses through a conversational interface.
 
